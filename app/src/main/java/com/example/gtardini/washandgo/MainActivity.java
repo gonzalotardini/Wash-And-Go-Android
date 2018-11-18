@@ -54,11 +54,12 @@ private Button refresh;
             row.addView(txt);
             layout.addView(row);
             LinearLayout row2 = new LinearLayout(this);
-            row2.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+            row2.setLayoutParams(new LinearLayout.LayoutParams(1425, LinearLayout.LayoutParams.WRAP_CONTENT));
             Button btnTag = new Button(this);
-            btnTag.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+            btnTag.setLayoutParams(new LinearLayout.LayoutParams(1425, LinearLayout.LayoutParams.WRAP_CONTENT));
             btnTag.setText("Prueba");
             btnTag.setId(1 + 1 + (1 * 4));
+
             row2.addView(btnTag);
 
 
