@@ -1,9 +1,13 @@
 package com.example.gtardini.washandgo;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -26,6 +30,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 private Button refresh;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -43,22 +48,36 @@ private Button refresh;
         LinearLayout layout = (LinearLayout) findViewById(R.id.linear_layout_tags);
         layout.setOrientation(LinearLayout.VERTICAL);  //Can also be done in xml by android:orientation="vertical"
         layout.removeAllViews();
+        layout.setGravity(Gravity.CENTER_HORIZONTAL);
 
         for (Lavado item : listlavados) {
             LinearLayout row = new LinearLayout(this);
             row.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+            row.setGravity(Gravity.CENTER_HORIZONTAL);
             TextView txt = new TextView(this);
+            txt.setGravity(Gravity.CENTER_HORIZONTAL);
             txt.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-            txt.setText("Fecha: "+ item.Fecha +"\nAuto: " + item.Marca + " " + item.Modelo + "\nServicio: " + item.Servicio );
+            txt.setText("\nID: " + item.id +"\nFecha: "+ item.Fecha +"\nAuto: " + item.Marca + " " + item.Modelo + "\nServicio: " + item.Servicio + "\n" );
             txt.setId(1 + 1 + (1 * 4));
+            txt.setTextSize(TypedValue.COMPLEX_UNIT_SP,20);
+            txt.setTextColor(Color.BLACK);
+            row.setGravity(Gravity.CENTER_HORIZONTAL);
             row.addView(txt);
             layout.addView(row);
             LinearLayout row2 = new LinearLayout(this);
             row2.setLayoutParams(new LinearLayout.LayoutParams(1425, LinearLayout.LayoutParams.WRAP_CONTENT));
-            Button btnTag = new Button(this);
+            final Button btnTag = new Button(this);
             btnTag.setLayoutParams(new LinearLayout.LayoutParams(1425, LinearLayout.LayoutParams.WRAP_CONTENT));
-            btnTag.setText("Prueba");
-            btnTag.setId(1 + 1 + (1 * 4));
+            btnTag.setText("Detalle");
+            btnTag.setBackgroundColor(Color.parseColor("#1487eb"));
+            btnTag.setTextColor(Color.WHITE);
+            btnTag.setId(Integer.parseInt(item.id));
+            btnTag.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    // Perform action on click
+                    OpenActivity(v);
+                }
+            });
 
             row2.addView(btnTag);
 
@@ -67,6 +86,13 @@ private Button refresh;
         }
     }
 
+
+    public void OpenActivity(View v){
+        Log.d("ANTESDEABRIR", Integer.toString(v.getId()));
+        Intent intent = new Intent(this, DetailActivity.class);
+        intent.putExtra("LAVADOID", Integer.toString(v.getId()));
+        startActivity(intent);
+    }
 
 
     public List<Lavado>  GetLavados(){
