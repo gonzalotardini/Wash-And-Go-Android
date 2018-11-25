@@ -5,6 +5,8 @@ import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -37,7 +39,9 @@ public class DetailActivity extends AppCompatActivity {
         LavadoDetalle detalle = new LavadoDetalle();
        detalle= GetDetalle(Integer.parseInt(iddd));
 
-        tv1.setText("Fecha: "+  detalle.Fecha + "\nIdLavado: " + detalle.IdLavado + "\nComentario cliente: " + detalle.ComentarioCliente);
+        tv1.setText("\nFecha: "+  detalle.Fecha+ "\n" + "\nServicio: " + detalle.Servicio+ "\n" + "\nAuto: "+ detalle.Auto+ "\n"  + "\nTotal: " + detalle.Total+ "\n"  + "\nCliente: " + detalle.NombreCliente+ "\n" + "\nLavador: "+ detalle.NombreLavador+ "\n" + "\nCalificación Cliente: " + detalle.CalificacionCliente+ "\n"   + "\nComentario Cliente: " + detalle.ComentarioCliente+ "\n"  + "\n"+ "Calificación Cliente: " + detalle.CalificacionLavador+ "\n"  + "\nComentario Lavador: " + detalle.ComentarioLavador+ "\n" );
+        tv1.setGravity(Gravity.CENTER_HORIZONTAL);
+        tv1.setTextSize(TypedValue.COMPLEX_UNIT_SP,20);
     }
 
 
