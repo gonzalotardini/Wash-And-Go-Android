@@ -29,6 +29,7 @@
                 android:layout_height="wrap_content"
                 android:background="#1487eb"
                 android:text="APROBAR"
+                android:onClick="Aprobar"
                 android:textColor="@android:color/background_light" />
         </LinearLayout>
     </ScrollView>
