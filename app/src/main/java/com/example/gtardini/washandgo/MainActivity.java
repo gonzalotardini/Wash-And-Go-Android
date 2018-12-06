@@ -1,5 +1,6 @@
 package com.example.gtardini.washandgo;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.StrictMode;
@@ -29,6 +30,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 private Button refresh;
+public static Activity fa;
 
 
     @Override
@@ -36,6 +38,7 @@ private Button refresh;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        fa=this;
         GetData();
     }
 

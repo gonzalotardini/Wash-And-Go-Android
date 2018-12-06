@@ -113,6 +113,7 @@ public class DetailActivity extends AppCompatActivity {
         AprobarLavado(Integer.parseInt(detalle.IdLavado));
         this.finish();
         Intent intent = new Intent(this, MainActivity.class);
+        MainActivity.fa.finish();
         startActivity(intent);
     }
 
